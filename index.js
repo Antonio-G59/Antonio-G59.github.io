@@ -23,24 +23,23 @@ async function runExample() {
   }
 
   let floatArray = new Float32Array(x.map(v => parseFloat(v)));
-  let tensorX = new ort.Tensor('float32', floatArray, [1, 31]); // or [1, 32] if needed
+  let tensorX = new ort.Tensor('float32', floatArray, [1, 33]);
   let session = await ort.InferenceSession.create('./DLnet_video_game.onnx');
 
 
-  let outputMap = await session.run([tensorX]);
+  let outputMap = await session.run({ input: tensorX });
   let outputData = outputMap.values().next().value;
 
   let predictions = document.getElementById('predictions');
   predictions.innerHTML = `
-    <hr>Got an output tensor:<br/>
-    <pre>${JSON.stringify(outputData.data, null, 2)}</pre>
+  <hr>Got an output tensor:<br/>
+  <pre>${JSON.stringify(outputData.data, null, 2)}</pre>
+  <table>
+      <tr>
+          <td>Game rating</td>
+          <td>${outputData.data[0].toFixed(2)}</td>
+      </tr>
+  </table>
 `;
 
-      <table>
-          <tr>
-              <td>Game rating</td>
-              <td>${outputData.data[0].toFixed(2)}</td>
-          </tr>
-      </table>
-  `;
 }
