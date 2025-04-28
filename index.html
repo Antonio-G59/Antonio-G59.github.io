@@ -1,0 +1,259 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script>
+  <script src="./index.js"></script>
+  
+  <style>
+      
+      table, th, td {
+           border: 1px solid;
+      }
+      
+      #leftbox {
+                float:left; 
+                width:33%;
+                height:300px;
+      }
+      #middlebox{
+                float:left; 
+                width:33%;
+                height:300px;
+        }
+        #rightbox{
+                float:right;
+                width:33%;
+                height:300px;
+        }
+        h1{
+                color:green;
+                text-align:center;
+        }
+     
+     
+      
+  </style>
+</head>
+<body>
+  
+  <h1> Video Game Rating </h1>
+  
+  
+  
+  
+    <div id = "boxes1">
+         
+              
+<form>
+  <label for="console">console:</label>
+  <select id="console" name="console">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="alcohol_reference">alcohol_reference:</label>
+  <select id="alcohol_reference" name="alcohol_reference">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="animated_blood">animated_blood:</label>
+  <select id="animated_blood" name="animated_blood">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="blood">blood:</label>
+  <select id="blood" name="blood">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="blood_and_gore">blood_and_gore:</label>
+  <select id="blood_and_gore" name="blood_and_gore">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="cartoon_violence">cartoon_violence:</label>
+  <select id="cartoon_violence" name="cartoon_violence">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="crude_humor">crude_humor:</label>
+  <select id="crude_humor" name="crude_humor">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="drug_reference">drug_reference:</label>
+  <select id="drug_reference" name="drug_reference">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="fantasy_violence">fantasy_violence:</label>
+  <select id="fantasy_violence" name="fantasy_violence">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="intense_violence">intense_violence:</label>
+  <select id="intense_violence" name="intense_violence">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="language">language:</label>
+  <select id="language" name="language">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="lyrics">lyrics:</label>
+  <select id="lyrics" name="lyrics">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="mature_humor">mature_humor:</label>
+  <select id="mature_humor" name="mature_humor">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="mild_blood">mild_blood:</label>
+  <select id="mild_blood" name="mild_blood">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="mild_cartoon_violence">mild_cartoon_violence:</label>
+  <select id="mild_cartoon_violence" name="mild_cartoon_violence">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="mild_fantasy_violence">mild_fantasy_violence:</label>
+  <select id="mild_fantasy_violence" name="mild_fantasy_violence">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="mild_language">mild_language:</label>
+  <select id="mild_language" name="mild_language">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="mild_lyrics">mild_lyrics:</label>
+  <select id="mild_lyrics" name="mild_lyrics">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="mild_suggestive_themes">mild_suggestive_themes:</label>
+  <select id="mild_suggestive_themes" name="mild_suggestive_themes">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="mild_violence">mild_violence:</label>
+  <select id="mild_violence" name="mild_violence">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="no_descriptors">no_descriptors:</label>
+  <select id="no_descriptors" name="no_descriptors">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="nudity">nudity:</label>
+  <select id="nudity" name="nudity">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="partial_nudity">partial_nudity:</label>
+  <select id="partial_nudity" name="partial_nudity">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="sexual_content">sexual_content:</label>
+  <select id="sexual_content" name="sexual_content">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="sexual_themes">sexual_themes:</label>
+  <select id="sexual_themes" name="sexual_themes">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="simulated_gambling">simulated_gambling:</label>
+  <select id="simulated_gambling" name="simulated_gambling">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="strong_janguage">strong_janguage:</label>
+  <select id="strong_janguage" name="strong_janguage">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="strong_sexual_content">strong_sexual_content:</label>
+  <select id="strong_sexual_content" name="strong_sexual_content">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="suggestive_themes">suggestive_themes:</label>
+  <select id="suggestive_themes" name="suggestive_themes">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="use_of_alcohol">use_of_alcohol:</label>
+  <select id="use_of_alcohol" name="use_of_alcohol">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="use_of_drugs_and_alcohol">use_of_drugs_and_alcohol:</label>
+  <select id="use_of_drugs_and_alcohol" name="use_of_drugs_and_alcohol">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+  <label for="violence">violence:</label>
+  <select id="violence" name="violence">
+    <option value="0">0</option>
+    <option value="1">1</option>
+  </select><br/>
+
+    </div> 
+      
+  <div>
+      <input style="background-color:yellow" type="button" value="Run" onclick="runExample()"/>
+   </div>
+  
+
+        <div id = "boxes2">
+              
+           
+              <h2>Inference </h2>
+              
+               <div id="predictions">
+               </div>
+              
+
+        </div>
+  
+
+</body>
+</html>
