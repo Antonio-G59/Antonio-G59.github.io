@@ -24,7 +24,7 @@ async function runExample() {
     let tensorX = new onnx.Tensor(x, 'float32', [1, 32]);
 
     let session = new onnx.InferenceSession();
-    await session.loadModel("./DLnet_gamerating.onnx");
+    await session.loadModel("DLnet_gamerating.onnx");
 
     let outputMap = await session.run({ input: tensorX });
     let outputData = outputMap.get('output1');
